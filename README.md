@@ -1,14 +1,8 @@
-README ko aise likho ki recruiter ko lage ye actual production-level project hai.
-
----
-
 # AI CRM Assistant
 
 **AI-Powered CRM Automation Platform built with FastAPI, LangChain, PostgreSQL, and LLMs**
 
 AI CRM Assistant is a full-stack AI application that automates customer support and CRM workflows using Large Language Models (LLMs), agent-based tool calling, and conversational memory. The system can classify customer queries, draft responses, create support tickets, fetch order information, and perform CRM actions through natural language conversations.
-
----
 
 ## Features
 
@@ -46,8 +40,6 @@ The assistant can perform CRM operations through tool calling:
 - Analytics dashboard
 - User authentication
 
----
-
 ## Architecture
 
 ```text
@@ -78,8 +70,6 @@ Tools   Tools   Tools
 │ PostgreSQL   │
 └──────────────┘
 ```
-
----
 
 ## Tech Stack
 
@@ -114,8 +104,6 @@ Tools   Tools   Tools
 - GitHub Actions
 - Nginx
 
----
-
 ## Core Workflow
 
 ```text
@@ -139,8 +127,6 @@ LLM Response
       ▼
 User
 ```
-
----
 
 ## Database Schema
 
@@ -194,8 +180,6 @@ status
 created_at
 ```
 
----
-
 ## API Endpoints
 
 ### Authentication
@@ -228,8 +212,6 @@ PATCH /api/tickets/:id
 GET /api/orders/:id
 ```
 
----
-
 ## Example Prompts
 
 ```text
@@ -247,8 +229,6 @@ Show all pending support tickets.
 ```text
 Send a follow-up email to the customer.
 ```
-
----
 
 ## Local Setup
 
@@ -286,8 +266,6 @@ npm run dev
 ```bash
 docker-compose up --build
 ```
-
----
 
 ## Future Improvements
 
