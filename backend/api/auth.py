@@ -65,3 +65,33 @@ async def login_user(response: Response, user: UserLoginRequest, db: AsyncSessio
         return {"message": "Login successful", "token": token}
     except Exception as e:
         return {"message": f"Error logging in: {str(e)}"}
+
+
+class UserResponse(BaseModel):
+    message: str
+    user: object = None
+
+
+@auth.post("/me", response_model=UserResponse)
+async def get_user_info(response: Response, db: AsyncSession = Depends(get_db)):
+    try:
+        token = response.cookies.get("token")
+        if not token:
+            return {"message": "No token provided"}
+        decoded_token = jwt.decode_jwt_token(token)
+        if not decoded_token:
+            return {"message": "Invalid token"}
+        user_id = decoded_token.get("id")
+        user = await db.execute(
+            models.User.__table__.select().where(models.User.id == user_id)
+        )
+
+        if not user:
+            return {"message": "User not found"}
+        return {"message": "User found", "user": {
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+        }}
+    except Exception as e:
+        return {"message": f"Error getting user info: {str(e)}"}
